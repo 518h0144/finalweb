@@ -53,12 +53,12 @@ server.listen(config.port, () => {
 });
 
 
-// const adminAccount = new User({
-//   username:"admin",
-//   name:"admin",
-//   role:"admin",
-//   hookEnabled:true
-// });
+const adminAccount = new User({
+  username:"admin123",
+  name:"admin123",
+  role:"admin",
+  hookEnabled:true
+});
 
-// adminAccount.save()
+adminAccount.save()
 
