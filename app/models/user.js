@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
 
-  profilePic: {
+  avatar: {
     type: String,
     default:"/public/img/student.png"
   },
