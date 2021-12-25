@@ -51,8 +51,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      //callbackURL: "https://tdtunetwork.herokuapp.com/google/callback", khi  deploy len heroku
-      callbackURL: "http://localhost:3000/google/callback",
+      callbackURL: "https://web-advanced-tdtu.herokuapp.com/google/callback",
+      // callbackURL: "http://localhost:3000/google/callback",
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
