@@ -2,65 +2,77 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema(
-  {
-    username: {
-      type: String,
-    },
-    email: {
-      type: String,
-      lowercase: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    password: {
-      type: String,
-      default: "hello",
-    },
-    authType: {
-      type: String,
-      enum: ["local", "google"],
-      default: "local",
-    },
-    authGoogleID: {
-      type: String,
-    },
-
-    faculty: {
-      type: String,
-    },
-
-    class: {
-      type: String,
-    },
-
-    avatar: {
-      type: String,
-    },
-    createdAt: {
-      type: Date,
-    },
-    updateAt: {
-      type: Date,
-    },
-    role: {
-      type: String,
-      enum: ["student", "faculty", "admin"],
-      default: "student",
-    },
-    manageTopic: { type: Schema.Types.ObjectId, ref: "TypeInform" },
-    hookEnabled: {
-      type: Boolean,
-      default: false,
-    },
-    post: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    min:3,
+    max:20,
+    unique: true,
   },
-  {
-    usePushEach: true,
-  }
-);
+  email: {
+    type: String,
+    lowercase: true,
+    max:50,
+    unique: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    default: "hello",
+    required: true,
+    min:6
+  },
+  authType: {
+    type: String,
+    enum: ["local", "google"],
+    default: "local",
+  },
+  authGoogleID: {
+    type: String,
+  },
+
+  faculty: {
+    type: String,
+  },
+
+  class: {
+    type: String,
+  },
+
+  profilePic: {
+    type: String,
+    default:"/public/img/student.png"
+  },
+  createdAt: {
+    type: Date,
+  },
+  updateAt: {
+    type: Date,
+  },
+  role: {
+    type: String,
+    enum: ["admin", "faculty", "student"],
+    default: "student",
+  },
+  manageTopic: {
+    type: Schema.Types.ObjectId,
+    ref: "TypeInform"
+  },
+  hookEnabled: {
+    type: Boolean,
+    default: false,
+  },
+  post: [{
+    type: Schema.Types.ObjectId,
+    ref: "Post"
+  }],
+}, {
+  usePushEach: true,
+});
 
 userSchema.pre("save", async function (next) {
   try {
