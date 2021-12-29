@@ -9,7 +9,7 @@ const config = {
       name: 'web'
     },
     port: process.env.PORT || 3000,
-    db: "mongodb+srv://chuongtran:chuong123@chuongtran.sctfo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    db: "mongodb+srv://admin:123@cluster0.ijxrp.mongodb.net/web?retryWrites=true&w=majority"
   },
 
   production: {
@@ -18,7 +18,7 @@ const config = {
       name: 'web'
     },
     port: process.env.PORT || 3000,
-    db: 'mongodb+srv://chuongtran:chuong123@chuongtran.sctfo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    db:"mongodb+srv://admin:123@cluster0.ijxrp.mongodb.net/web?retryWrites=true&w=majority"
   }
 };
 

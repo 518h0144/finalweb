@@ -8,9 +8,7 @@ const typeSchema = new Schema({
     required: true,
     unique: true,
   },
-
 });
-
 const TypeInform = mongoose.model("TypeInform", typeSchema);
 
 module.exports = TypeInform;

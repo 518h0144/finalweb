@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
-
 const informSchema = new Schema({
   idOwner: {
     type: Schema.Types.ObjectId,
@@ -12,11 +10,11 @@ const informSchema = new Schema({
     type: String,
     required: true,
   },
-  idType: {
-    type: Schema.Types.ObjectId,
-    ref: "TypeInform",
-    required: true
-  },
+  // idType: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "TypeInform",
+  //   required: true
+  // },
   content: {
     type: String,
     required: true,
@@ -25,7 +23,5 @@ const informSchema = new Schema({
     type: Date,
   },
 });
-
 const Inform = mongoose.model("Inform", informSchema);
-
 module.exports = Inform;

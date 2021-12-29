@@ -56,7 +56,7 @@ const panel = new Vue({
   el: ".list-post",
   data: {
     listPost: [],
-   
+
     dialogEditPost: false,
     indexPostTargetedEdit: -1,
     contentEdit: "",
@@ -75,9 +75,9 @@ const panel = new Vue({
 
     this.listPost = listPost;
 
-   
-  
-  
+
+
+
     window.addEventListener("scroll", this.handleScroll);
   },
 

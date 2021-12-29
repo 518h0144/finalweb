@@ -1,18 +1,25 @@
 <% include header %> <% include topNav %>
 <div id="list-inform" class="container">
-
   <select name="cars" class="custom-select-sm" @change="changeType($event)">
     <option value="all" <%if(type=='all'){%>selected<%}%>>All</option>
-    <% for(let j=0; j<listTypeInform.length; j++) {%> <option value="<%=listTypeInform[j]._id%>"
+        <% for(let j=0; j<listTypeInform.length; j++)
+        {%> <option value="<%=listTypeInform[j]._id%>"
       <%if(type==listTypeInform[j]._id){%>selected<%}%>  ><%=listTypeInform[j].name%></option> <%}%>
   </select>
-  <div class="d-flex justify-content-center"><ul class="pagination">
-   <%if(back==true){%> <li class="page-item"><a class="page-link"
-        href="/inform?type=<%=type%>&page=<%=currentPage-1%>">
-        <</a> </li><%}%>
-    <li class="page-item"><a class="page-link" href="/inform?type=<%=type%>&page=<%=currentPage%>"><%=currentPage %>
-          </a> </li> <%if(next==true){%> <li class="page-item"><a class="page-link"
-            href="/inform?type=<%=type%>&page=<%=currentPage+1%>">></a></li><%}%>
+  <div class="d-flex justify-content-center">
+    <ul class="pagination">
+   <%if(back==true){%>
+      <li class="page-item">
+        <a class="page-link" href="/inform?type=<%=type%>&page=<%=currentPage-1%>"> <</a>
+      </li><%}%>
+    <li class="page-item">
+      <a class="page-link" href="/inform?type=<%=type%>&page=<%=currentPage%>"><%=currentPage %> </a>
+    </li>
+    <%if(next==true){%>
+    <li class="page-item">
+        <a class="page-link" href="/inform?type=<%=type%>&page=<%=currentPage+1%>">></a>
+    </li>
+    <%}%>
   </ul></div>
   <div id="informs">
     <% for(let j=0; j<listInform.length; j++) {%>
@@ -42,17 +49,14 @@
                     &times;
                   </button>
                 </div>
-
                 <form action="/inform" method="post">
                   <!-- Modal body -->
                   <div class="modal-body">
-
                     <label><b>Chủ đề</b></label>
                     <textarea class="form-control" rows="2" name="title"></textarea>
                     <label><b>Nội dung</b></label>
                     <textarea class="form-control" rows="4" name="content"></textarea>
                   </div>
-
                   <!-- Modal footer -->
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Tạo</button>
