@@ -15,16 +15,17 @@ module.exports = (app) => {
 // Tạo tài khoản cho khoa hay phòng ban
 router.post("/",middle.checkLogged,middle.checkAdmin ,async (req, res) => {
   try {
-    const { username, name } = req.body;
-    
+    const { username, name ,password } = req.body;
+
 
     //tạo user mới
     const user = new User({
       username: username.trim(),
+      password: password.trim(),
       name,
       role: "faculty",
       hookEnabled: true,
-      avatar: "img/test.png",
+      avatar: "/public/img/teacher.png",
       faculty: name,
     });
 
@@ -145,9 +146,9 @@ router.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-//Đôi mật khẩu 
+//Đôi mật khẩu
 router.post("/changepassword",middle.checkLogged,(req,res)=>{
-  
+
   try{
     User.findById(req.user._id,async(err,doc)=>{
       if(err){

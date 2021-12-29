@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const config = require('./config/config');
 const glob = require('glob');
@@ -53,12 +51,13 @@ server.listen(config.port, () => {
 });
 
 
-const adminAccount = new User({
-  username:"admin123",
-  name:"admin123",
-  role:"admin",
-  hookEnabled:true
-});
+// const adminAccount = new User({
+//   username:"admin",
+//   name:"admin",
+//   password:"admin",
+//   role:"admin",
+//   hookEnabled:true
+// });
 
-adminAccount.save()
+// adminAccount.save()
 

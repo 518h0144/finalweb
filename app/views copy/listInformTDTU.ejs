@@ -46,7 +46,12 @@
                 <form action="/inform" method="post">
                   <!-- Modal body -->
                   <div class="modal-body">
+                    <a class="navbar-brand" href=""> Hello </a>
 
+                    <div class="form-group">
+                      <label>Phân loại:</label>
+                      <span class="text-danger title-text"><%=user.manageTopic.name%></span>
+                    </div>
                     <label><b>Chủ đề</b></label>
                     <textarea class="form-control" rows="2" name="title"></textarea>
                     <label><b>Nội dung</b></label>

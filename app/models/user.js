@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
+
     min:3,
     max:20,
     unique: true,
@@ -22,9 +22,8 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    default: "hello",
+    // default: "hello",
     required: true,
-    min:6
   },
   authType: {
     type: String,
@@ -45,7 +44,6 @@ const userSchema = new mongoose.Schema({
 
   avatar: {
     type: String,
-    default:"/public/img/student.png"
   },
   createdAt: {
     type: Date,
@@ -55,7 +53,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "faculty", "student"],
+    enum: ["student", "faculty", "admin"],
     default: "student",
   },
   manageTopic: {

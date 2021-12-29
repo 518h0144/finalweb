@@ -3,7 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  idOwner:{ type: Schema.Types.ObjectId, ref: 'User' ,required:true},
+  idOwner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   content: {
     type: String,
   },
@@ -22,11 +26,14 @@ const postSchema = new Schema({
   video: {
     type: String,
   },
-  listComment: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-},{
+  listComment: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment'
+  }],
+}, {
   usePushEach: true
 });
 
 const Post = mongoose.model("Post", postSchema);
 
-module.exports =Post
+module.exports = Post
