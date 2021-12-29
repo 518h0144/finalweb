@@ -89,14 +89,12 @@ router.get("/", middle.checkLogged, async (req, res) => {
 router.post("/", middle.checkLogged, middle.checkFaculty, async (req, res) => {
   try {
     const { title, content } = req.body;
-    const type = req.user.manageTopic;
 
     const inform = new Inform({
       idOwner: req.user._id,
       title,
       content,
       createdAt: new Date(),
-      idType: type._id,
     });
 
     await inform.save();
@@ -109,6 +107,13 @@ router.post("/", middle.checkLogged, middle.checkFaculty, async (req, res) => {
     res.redirect("back");
   }
 });
+// const thongbao = new Inform({
+//   idOwner :"61cc3a9d7465c04e549d16b7",
+//   name:"CTHSSV",
+//   title: "test",
+//   content: "test content"
+// })
+// thongbao.save();
 
 // API trả về 5 thông báo mới nhất
 
@@ -130,7 +135,7 @@ router.get("/api",async (req, res) => {
 //Xóa thông báo
 router.get("/delete/:id",middle.checkLogged,middle.checkFaculty ,async (req, res) => {
   try {
- 
+
     const { id } = req.params;
     await Inform.findByIdAndRemove(id).exec();
     res.redirect("/inform");
@@ -142,7 +147,7 @@ router.get("/delete/:id",middle.checkLogged,middle.checkFaculty ,async (req, res
 //Chỉnh sủa thông báo
 router.post("/edit" ,middle.checkLogged,middle.checkFaculty,async(req,res)=>{
  try{
-  
+
   const {idInform,title,content} = req.body
   const userID = req.user._id
   Inform.findById(idInform,async (err,doc)=>{
